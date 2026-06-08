@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>简历项目优化 Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand">
+            <div class="brand-mark">RA</div>
+            <div>
+              <h1>简历项目优化 Agent</h1>
+              <p id="runtimeStatus">连接中</p>
+            </div>
+          </div>
+
+          <form id="startForm" class="start-form">
+            <label>
+              项目名称
+              <input id="projectName" name="project_name" placeholder="例如：简历项目优化 Agent" required />
+            </label>
+            <label>
+              目标岗位
+              <input id="targetRole" name="target_role" value="后端开发 / AI Agent 相关岗位" />
+            </label>
+            <label>
+              技术栈
+              <input id="techStack" name="tech_stack" placeholder="Python, FastAPI, hello_agents" />
+            </label>
+            <label>
+              原始项目描述
+              <textarea id="roughDescription" name="rough_description" rows="6" placeholder="写下你目前会放进简历的粗略描述" required></textarea>
+            </label>
+            <button class="primary-button" type="submit">创建会话</button>
+          </form>
+        </div>
+
+        <section class="history-panel">
+          <div class="panel-title">
+            <h2>历史会话</h2>
+            <button id="refreshSessions" class="ghost-button compact" type="button">刷新</button>
+          </div>
+          <div class="history-actions">
+            <button id="selectDeleteBtn" class="ghost-button" type="button">指定删除</button>
+            <button id="cancelDeleteBtn" class="ghost-button danger-outline" type="button" hidden>取消</button>
+            <button id="deleteAllBtn" class="ghost-button danger-outline" type="button">全部删除</button>
+          </div>
+          <div id="deleteHint" class="delete-hint" hidden>选择要删除的会话，再点击“确认删除”。</div>
+          <div id="sessionList" class="session-list"></div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <section class="conversation-panel">
+          <div class="stage-strip" id="stageStrip">
+            <span data-stage="overview">项目定位</span>
+            <span data-stage="role">个人职责</span>
+            <span data-stage="technical">技术难点</span>
+            <span data-stage="impact">结果量化</span>
+            <span data-stage="finalizing">生成</span>
+          </div>
+
+          <div class="conversation-meta">
+            <div>
+              <strong id="stageStatus">等待创建会话</strong>
+              <span id="questionSource">来源：暂无</span>
+            </div>
+            <span id="roundStatus">0/4</span>
+          </div>
+
+          <div id="chatLog" class="chat-log">
+            <div class="message assistant">
+              <div class="message-name">项目追问Agent</div>
+              <div class="message-body">等待项目材料。</div>
+            </div>
+          </div>
+
+          <form id="answerForm" class="answer-bar">
+            <textarea id="answerInput" rows="3" placeholder="回答当前追问" disabled></textarea>
+            <div class="answer-actions">
+              <button id="submitAnswer" class="primary-button" type="submit" disabled>提交回答</button>
+              <button id="finalizeBtn" class="secondary-button" type="button" disabled>生成报告</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="result-panel">
+          <div class="result-header">
+            <div class="panel-title">
+              <h2>优化结果</h2>
+              <button id="copyMarkdown" class="ghost-button compact" type="button" disabled>复制 Markdown</button>
+            </div>
+            <div id="progressLog" class="progress-log"></div>
+            <div id="resultTabs" class="tabs" hidden>
+              <button data-tab="summary" class="active" type="button">简历稿</button>
+              <button data-tab="tech" type="button">技术亮点</button>
+              <button data-tab="interview" type="button">面试追问</button>
+              <button data-tab="score" type="button">评分</button>
+            </div>
+          </div>
+          <div id="resultView" class="result-view empty">生成后会显示结构化结果。</div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

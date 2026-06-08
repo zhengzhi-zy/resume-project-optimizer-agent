@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+
+# local environment
+.env
+.venv/
+.idea/
+
+# runtime data
+data/
+
+# one-off local scripts and notes
+1.py
+.md
+hello_agents_code_summary.md
+
+# personal/local documents
+成绩单.md
+郑志3123003330.md
+
+# local extracted artifacts / external repos
+mineru_output/
+markitdown/
