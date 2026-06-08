@@ -1,5 +1,7 @@
 # Resume Project Optimizer Agent
 
+[中文说明](./README.zh-CN.md)
+
 An interactive resume project optimization system built on top of the local `hello_agents` package.
 
 The project helps a user turn a vague project description into a stronger, interview-ready resume project entry through staged questioning, structured memory, context engineering, and evidence-aware rewriting.
